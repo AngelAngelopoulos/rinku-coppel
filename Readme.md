@@ -29,6 +29,7 @@ Aplicación de cálculo de nomas según los requerimientos de las pruebas.
     git clone https://github.com/AngelAngelopoulos/rinku-coppel.git
     cd rinku-coppel
     touch .env #o puede usar nano o vim, hay que reemplazar los valores necesarios en este archivo antes de cualquier otra cosa 
+    #poner valores en el .env
     docker-compose up -d
     ```
 
