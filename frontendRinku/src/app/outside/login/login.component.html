@@ -1,0 +1,16 @@
+<div class="loginBox">
+  <div class="text-2xl text-center">
+    Bienvenido
+  </div>
+  <form (ngSubmit)="login()" [formGroup]="this.formGroup" class="inputBox">
+    <mat-form-field class="w-full">
+      <mat-label>Username</mat-label>
+      <input formControlName="user" class="w-full" matInput placeholder="example@email.com" [value]="this.user">
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" class="w-full" type="password" matInput [value]="this.password">
+    </mat-form-field>
+    <button type="submit" mat-raised-button mat-button class="loginButton">LOGIN</button>
+  </form>
+</div>

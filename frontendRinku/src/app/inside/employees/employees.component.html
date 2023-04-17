@@ -1,0 +1,54 @@
+<div class="mx-auto flex flex-col justify-center items-center w-11/12 min-h-full">
+  <span class="text-5xl text-center mx-auto text-white pt-6 pb-2">Empleados</span>
+  <button (click)="createNewEmployee()" mat-button
+    class="ml-auto flex flex-row justify-center items-center bg-blue-300 py-3 px-6 rounded-full">Nuevo empleado
+    <mat-icon>person_add</mat-icon></button>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" ngClass="w-full mx-auto my-8">
+    <ng-container matColumnDef="Numero de empleado">
+      <th mat-header-cell *matHeaderCellDef>
+        <div class="justify-center text-center">Numero de empleado</div>
+      </th>
+      <td class="justify-center text-center space-x-2 w-60" mat-cell *matCellDef="let element">{{element.ID}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Nombre">
+      <th mat-header-cell *matHeaderCellDef>
+        <div class="justify-center text-center">Nombre(s)</div>
+      </th>
+      <td class="justify-center text-center space-x-2" mat-cell *matCellDef="let element">{{element.Name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Apellido">
+      <th mat-header-cell *matHeaderCellDef>
+        <div class="justify-center text-center">Apellido(s)</div>
+      </th>
+      <td class="justify-center text-center space-x-2" mat-cell *matCellDef="let element">{{element.Surname}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Rol">
+      <th mat-header-cell *matHeaderCellDef>
+        <div class="justify-center text-center">Rol</div>
+      </th>
+      <td class="justify-center text-center space-x-2" mat-cell *matCellDef="let element">
+        <mat-radio-group (change)="updateEmployee(element, $event.value)"
+          class="flex flex-row justify-evenly items-start  w-full mx-auto" aria-label="Select an option">
+          <mat-radio-button [checked]="element.RoleName == 'chofer'" value="1">Chofer</mat-radio-button>
+          <mat-radio-button [checked]="element.RoleName == 'cargador'" value="2">Cargador</mat-radio-button>
+          <mat-radio-button [checked]="element.RoleName == 'auxiliar'" value="3">Auxiliar</mat-radio-button>
+        </mat-radio-group>
+      </td>
+    </ng-container>
+    <ng-container appearance="none" matColumnDef="Acciones">
+      <th mat-header-cell *matHeaderCellDef>
+        <div class="justify-center text-center">Acciones</div>
+      </th>
+      <td mat-cell appearance="none" *matCellDef="let element">
+        <div class="flex flex-row justify-center items-center mx-auto space-x-4">
+          <button (click)="this.showWorkdays(element)" mat-icon-button><mat-icon>list_alt</mat-icon></button>
+          <button (click)="this.editEmployee(element)" mat-icon-button><mat-icon>manage_accounts</mat-icon></button>
+          <button (click)="this.deleteEmployee(element)" mat-icon-button
+            class="text-red-500/80"><mat-icon>person_remove</mat-icon></button>
+        </div>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

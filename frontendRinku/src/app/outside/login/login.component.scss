@@ -1,0 +1,12 @@
+.loginBox {
+  @apply flex flex-col justify-center items-center content-center
+  w-full h-full min-h-full space-y-12 text-white focus:text-white focus:accent-white focus:decoration-white;
+}
+
+.inputBox {
+  @apply flex flex-col justify-center items-center space-y-3 w-1/6
+}
+
+.loginButton {
+  @apply bg-blue-500 px-6 py-3 rounded-full w-full hover:bg-blue-800
+}

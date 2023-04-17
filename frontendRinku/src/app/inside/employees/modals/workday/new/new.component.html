@@ -1,0 +1,47 @@
+<div class="modal">
+  <span class="text-center text-2xl py-8">
+    Captura movimientos al mes
+  </span>
+  <form (ngSubmit)="this.createWorkday()" [formGroup]="this.formGroup" class="formBox">
+    <mat-form-field class="inputBox">
+      <mat-label class="">Numero de empleado</mat-label>
+      <input type="number" [disabled]="true" class="w-full" matInput placeholder="" [value]="this.employee.ID">
+    </mat-form-field>
+    <mat-form-field class="inputBox">
+      <mat-label class="w-full">Nombre(s)</mat-label>
+      <input [disabled]="true" class="w-full" matInput placeholder="" [value]="this.employee.Name">
+    </mat-form-field>
+    <mat-form-field class="inputBox">
+      <mat-label class="w-full">Apellido(s)</mat-label>
+      <input [disabled]="true" class="w-full" matInput placeholder="" [value]="this.employee.Surname">
+    </mat-form-field>
+    <mat-form-field class="inputBox" appearance="fill">
+      <mat-label>Mes</mat-label>
+      <mat-select [(value)]="this.month">
+        <mat-option *ngFor="let month of this.months" [value]="this.month">
+          {{ month.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="inputBox" appearance="fill">
+      <mat-label>Año</mat-label>
+      <mat-select [(value)]="this.year">
+        <mat-option *ngFor="let year of this.years" [value]="this.year">
+          {{ year }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="inputBox">
+      <mat-label class="w-full">Entregas</mat-label>
+      <input type="number" formControlName="workdayDeliveries" class="w-full" matInput placeholder="">
+    </mat-form-field>
+    <div class="w-full flex flex-row justify-end items-end">
+      <div class="flex flex-row justify-end w-full items-center py-4">
+        <button mat-raised-button (click)="closeThis()" mat-button
+          class="bg-red-500/50 py-3 px-6 rounded-full mr-2">Cancelar</button>
+        <button mat-raised-button mat-button
+          class=" bg-blue-300 text-black py-3 px-6 rounded-full ml-2">Guardar</button>
+      </div>
+    </div>
+  </form>
+</div>

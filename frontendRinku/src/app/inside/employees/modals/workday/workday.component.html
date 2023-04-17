@@ -1,0 +1,79 @@
+<div class="mx-auto flex flex-col justify-center items-center w-11/12 min-h-full">
+  <span class="text-5xl text-center mx-auto text-white pt-6 pb-2">Nómina</span>
+  <button (click)="this.createNewWorkday()" mat-button
+    class="ml-auto flex flex-row justify-center items-center bg-blue-300 py-3 px-6 rounded-full">Nueva captura de
+    entregas<mat-icon>person_add</mat-icon></button>
+  <div class="overflow-y-scroll h-96 tableBox">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" ngClass="w-full mx-auto my-8">
+      <ng-container matColumnDef="Year">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="justify-center text-center px-2">Año</div>
+        </th>
+        <td class="justify-center text-center space-x-2 w-60" mat-cell *matCellDef="let element">{{element.Year}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Month">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="justify-center text-center px-2">Mes</div>
+        </th>
+        <td class="justify-center text-center space-x-2 w-60" mat-cell *matCellDef="let element">{{
+          this.getMonth(element.Month) }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Deliveries">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="justify-center text-center px-2">Entregas</div>
+        </th>
+        <td class="justify-center text-center space-x-2 w-60" mat-cell *matCellDef="let element">{{element.Deliveries}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="GrossSalary">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="justify-center text-center">Salario Bruto</div>
+        </th>
+        <td class="justify-center text-center space-x-2 w-60" mat-cell *matCellDef="let element">{{element.GrossSalary |
+          number : '1.2-2'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="NetSalary">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="justify-center text-center">Salario Neto</div>
+        </th>
+        <td class="justify-center text-center space-x-2 w-60" mat-cell *matCellDef="let element">{{element.NetSalary |
+          number : '1.2-2' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Taxes">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="justify-center text-center">Retenciones</div>
+        </th>
+        <td class="justify-center text-center space-x-2 w-60" mat-cell *matCellDef="let element">{{element.Taxes |
+          number : '1.2-2'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="FoodSupportPayment">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="justify-center text-center">Vales de Despensa</div>
+        </th>
+        <td class="justify-center text-center space-x-2 w-60" mat-cell *matCellDef="let element">
+          {{element.FoodSupportPayment | number : '1.2-2'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="BonusTotalPayment">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="justify-center text-center">Total de bonos</div>
+        </th>
+        <td class="justify-center text-center space-x-2 w-60" mat-cell *matCellDef="let element">
+          {{element.BonusTotalPayment | number : '1.2-2'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="DeliveriesTotalPayment">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="justify-center text-center">Pago total por entregas</div>
+        </th>
+        <td class="justify-center text-center space-x-2 w-60" mat-cell *matCellDef="let element">
+          {{element.DeliveriesTotalPayment | number : '1.2-2'}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <div class="flex flex-row justify-end w-full items-center py-4">
+    <button mat-raised-button (click)="closeThis()" mat-button
+      class="bg-red-500/50 py-3 px-6 rounded-full mr-2">Cerrar</button>
+  </div>
+</div>

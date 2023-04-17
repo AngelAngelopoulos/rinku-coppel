@@ -1,0 +1,40 @@
+<div class="modal">
+  <span class="text-center text-2xl py-8">
+    {{ this.isNew ? "Crear nuevo empleado" : "Editar empleado" }}
+  </span>
+  <form (ngSubmit)="this.isNew ? this.createEmployee() : this.updateEmployee()" [formGroup]="this.formGroup"
+    class="formBox">
+    <mat-form-field class="inputBox">
+      <mat-label class="">Numero de empleado</mat-label>
+      <input type="number" [disabled]="true" class="w-full" matInput placeholder="" [value]="this.index">
+    </mat-form-field>
+    <mat-form-field class="inputBox">
+      <mat-label class="w-full">Nombre(s)</mat-label>
+      <input formControlName="employeeName" class="w-full" matInput placeholder="" [value]="this.employee?.Name">
+    </mat-form-field>
+    <mat-form-field class="inputBox">
+      <mat-label class="w-full">Apellido(s)</mat-label>
+      <input formControlName="employeeSurname" class="w-full" matInput placeholder="" [value]="this.employee?.Surname">
+    </mat-form-field>
+    <div class="inputBox p-4 mt-2 border border-white">
+      <mat-label class="w-full">Rol</mat-label>
+      <mat-radio-group [value]="this.employee?.RoleId" formControlName="employeeRole"
+        class="flex flex-col justify-center items-start w-full mx-auto pl-8 space-y-2" aria-label="Select an option">
+        <mat-radio-button [checked]="this.employee?.RoleId == 1"
+          class="flex flex-row justify-center items-center  w-1/3" value="1">Chofer</mat-radio-button>
+        <mat-radio-button [checked]="this.employee?.RoleId == 2"
+          class="flex flex-row justify-center items-center  w-1/3" value="2">Cargador</mat-radio-button>
+        <mat-radio-button [checked]="this.employee?.RoleId == 3"
+          class="flex flex-row justify-center items-center  w-1/3" value="3">Auxiliar</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="w-full flex flex-row justify-end items-end">
+      <div class="flex flex-row justify-end w-full items-center py-4">
+        <button mat-raised-button (click)="closeThis()" mat-button
+          class="bg-red-500/50 py-3 px-6 rounded-full mr-2">Cancelar</button>
+        <button type="submit" mat-raised-button mat-button
+          class=" bg-blue-300 text-black py-3 px-6 rounded-full ml-2">Guardar</button>
+      </div>
+    </div>
+  </form>
+</div>

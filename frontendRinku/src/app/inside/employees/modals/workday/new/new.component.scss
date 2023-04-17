@@ -1,0 +1,16 @@
+.modal {
+  width: 40vw;
+  @apply flex flex-col justify-center items-center
+}
+
+.formBox {
+  @apply flex flex-col justify-start items-center w-11/12 mx-auto h-full space-y-4 text-white focus:text-white focus:accent-white focus:decoration-white hover:text-white;
+}
+
+.inputBox {
+  @apply justify-start items-center w-full mx-auto content-center
+}
+
+.loginButton {
+  @apply bg-blue-500 px-6 py-3 rounded-full w-full hover:bg-blue-800
+}

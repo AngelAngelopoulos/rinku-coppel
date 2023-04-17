@@ -1,0 +1,15 @@
+<div class="modal">
+  <span class="text-center text-2xl py-8 w-full">
+    Captura movimientos al mes
+  </span>
+
+  <span class="text-lg py-4 w-full text-center">
+    ¿Desea borrar al emploeado {{ this.employee.Name }} {{this.employee.Surname}} definitivamente?
+  </span>
+  <div class="flex flex-row justify-end w-full items-center py-4">
+    <button mat-raised-button (click)="closeThis()" mat-button
+      class="bg-red-500/50 py-3 px-6 rounded-full mr-2">Cancelar</button>
+    <button (click)="this.deleteEmployee()" mat-raised-button mat-button
+      class=" bg-blue-300 text-black py-3 px-6 rounded-full ml-2">Aceptar</button>
+  </div>
+</div>
